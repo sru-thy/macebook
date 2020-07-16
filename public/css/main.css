@@ -1,0 +1,6 @@
+@import './shared/nav.css';
+
+body {
+	background: #fff;
+	font-family: 'Varela Round', sans-serif;
+}

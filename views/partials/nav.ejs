@@ -1,0 +1,28 @@
+<nav class="navbar fixed-top navbar-dark navbar-expand-xl ">
+	<a href="/" class="navbar-brand">Mace<b>Book</b></a>  		
+	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">		
+		<form class="navbar-form form-inline" action="/search">
+			<div class="input-group search-box">				
+				<input type="text" id="search" class="form-control" placeholder="Search here...">
+				<span class="input-group-append"><a href="/search">
+                <i class="material-icons">&#xE8B6;</i></span></a>
+			</div>
+		</form>
+		<div class="navbar-nav ml-auto">
+			<a href="#" class="nav-item nav-link"><i class="fa fa-users"></i><span>Channels</span></a>
+			 <div class="nav-item navbar-nav dropdown">
+				<a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><i class="fa fa-user"></i><span>User</span> <b class="caret"></b></a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
+					<a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a>
+					<div class="divider dropdown-divider"></div>
+					<a href="#" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a>
+				</div>
+			</div> 
+            <a href="/login" class="nav-item nav-link"><i class="fa fa-user"></i><span>SignIn</span></a>
+		</div>
+	</div>
+</nav>
