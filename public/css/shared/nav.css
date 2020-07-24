@@ -101,7 +101,6 @@
 	padding: 8px 15px;
 	font-size: 14px;
 }
-
 .dropdown-menu {
 	background: #ffffff;
 	border-radius: 1px;
@@ -110,6 +109,15 @@
 }
 .navbar .divider {
 	background-color: #e9ecef !important;
+}
+.newbtn{
+background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }
 @media (min-width: 1200px){
 	.form-inline .input-group {
