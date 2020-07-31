@@ -1,6 +1,15 @@
 @import './shared/nav.css';
+@import './shared/signin.css';
+@import './shared/createpost.css';
 
 body {
 	background: #fff;
 	font-family: 'Varela Round', sans-serif;
+	padding-top: 60px;
 }
+
+@media (min-width: 979px) {
+	body {
+	  padding-top: 60px;
+	}
+  }

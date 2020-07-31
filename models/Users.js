@@ -37,6 +37,16 @@ var UserSchema = new mongoose.Schema({
     }
 });
 
+
+UserSchema.set('toJSON', { getters: true });
+UserSchema.options.toJSON.transform = (doc, ret) => {
+  const obj = { ...ret };
+  delete obj._id;
+  delete obj.__v;
+  delete obj.password;
+  return obj;
+};
+
 UserSchema.plugin(passportLocalMongoose,options);
 
 module.exports = mongoose.model("User", UserSchema);
