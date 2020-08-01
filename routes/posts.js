@@ -7,7 +7,7 @@ router.param('post', posts.load);
 router.get('/home', posts.list);
 router.get('/post/:post', posts.show);
 router.get('/createpost',loggedin,(req,res) => {
-    res.render('createpost')
+    res.render('createpost',{title:'Create Post'})
 });
 router.post('/createpost', [ posts.validate], posts.create);
 router.delete('/post/:post', [loggedin, postAuth], posts.destroy);

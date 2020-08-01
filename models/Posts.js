@@ -25,7 +25,7 @@ const postSchema = new Schema({
     votes: [{ user: Schema.Types.ObjectId, vote: Number, _id: false }],
     comments: [commentSchema],
     created: { type: Date, default: Date.now },
-    type: { type: String, default: 'link', required: true },
+    type: { type: String, default: 'text' },
     text: { type: String },
   });
 

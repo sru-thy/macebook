@@ -44,13 +44,12 @@ exports.show = async (req, res) => {
     }
   
     try {
-      const { title, url, category, type, text } = req.body;
+      const { title, url,type, text } = req.body;
       const author = req.user.id;
       const post = await Post.create({
         title,
         url,
         author,
-        category,
         type,
         text
       });
@@ -95,17 +94,9 @@ exports.show = async (req, res) => {
     }
   };
   
-  const typeIsValid = body('type')
-    .exists()
-    .withMessage('is required')
-  
-    .isIn(['link', 'text'])
-    .withMessage('must be a link or text post');
-  
   exports.validate = [
     titleIsValid,
-    urlOrTextIsValid,
-    typeIsValid
+    urlOrTextIsValid
   ];
   
   exports.upvote = async (req, res) => {

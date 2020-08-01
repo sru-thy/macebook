@@ -12,14 +12,16 @@
     		        <label for="title">Title</label>
     		        <input type="text" class="form-control" name="title" />
     		    </div>
-                <div class="form-group has-error" id="urlpost">
+                <div class="form-group" id="urlpost">
     		        <label for="url">Url</label>
-    		        <input type="text" class="form-control" name="url" />
-    		        <!-- <span class="help-block">Field not entered!</span> -->
+    		        <input type="url" class="form-control" name="url"/>
     		    </div>
     		    <div class="form-group" id="textpost">
     		        <label for="description">Text</label>
-    		        <textarea rows="3" class="form-control" name="description" ></textarea>
+    		        <textarea rows="3" class="form-control" type="text" name="text"></textarea>
+				</div>
+				<div class="form-group" id="type">
+    		        <input type="text"  class="value" class="form-control" name="type" value=""/>
     		    </div>
     		    <div class="form-group">
     		        <button type="submit" style="background-color: black; color: white;">
@@ -30,3 +32,4 @@
 		</div>	
 	</div>
 </div>
+<script src="/js/createpost.js"></script>
