@@ -40,7 +40,7 @@ exports.show = async (req, res) => {
     const result = validationResult(req);
     if (!result.isEmpty()) {
       const errors = result.array({ onlyFirstError: true });
-      return res.status(422).json({ errors });
+      return res.render('createpost',{ message: errors[0].msg})
     }
   
     try {
@@ -53,7 +53,7 @@ exports.show = async (req, res) => {
         type,
         text
       });
-      res.status(201).json(post);
+      res.redirect('/user/'+ req.user.username);
     } catch (err) {
       next(err);
     }
@@ -61,34 +61,34 @@ exports.show = async (req, res) => {
   
   const titleIsValid = body('title')
     .exists()
-    .withMessage('is required')
+    .withMessage('title is required :(')
   
     .isLength({ min: 1 })
-    .withMessage('cannot be blank')
+    .withMessage('title cannot be blank :(')
   
     .isLength({ max: 100 })
-    .withMessage('must be at most 100 characters long')
+    .withMessage('title must be at most 100 characters long :(')
   
     .custom(value => value.trim() === value)
-    .withMessage('cannot start or end with whitespace');
+    .withMessage('title cannot start or end with whitespace :(');
   
   const urlOrTextIsValid = (req, res, next) => {
     if (req.body.type === 'link') {
       const chain = body('url')
         .exists()
-        .withMessage('is required')
+        .withMessage('url is required :(')
   
         .isURL()
-        .withMessage('is invalid');
+        .withMessage('url is invalid :(');
   
       chain(req, res, next);
     } else {
       const chain = body('text')
         .exists()
-        .withMessage('is required')
+        .withMessage('text is required :(')
   
         .isLength({ min: 4 })
-        .withMessage('must be at least 4 characters long');
+        .withMessage('text must be at least 4 characters long :(');
   
       chain(req, res, next);
     }

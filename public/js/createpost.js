@@ -8,12 +8,20 @@ $(document).ready(function(){
     });
     $("#text").click(function(){
       $( ".value" ).val("text");
+      $( "#urlar" ).val("");
       $("#textpost").show();
       $("#urlpost").hide();
     });
     $("#url").click(function(){
       $( ".value" ).val("link");
+      $( "#textar" ).val("");
       $("#urlpost").show();
       $("#textpost").hide();
     });
 });
+
+function submitForm() {
+  var frm = document.getElementById('createpostform');
+  frm.submit(); 
+  return false; 
+}

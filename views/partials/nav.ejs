@@ -17,7 +17,7 @@
 			 <div class="nav-item navbar-nav dropdown">
 				<a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><i class="fa fa-user-circle"></i><span><%= user.username %></span> <b class="caret"></b></a>
 				<div class="dropdown-menu dropdown-menu-right">
-					<a href="/u/" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
+					<a href="/user/<%= user.username %>" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
 					<a href="/settings" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a>
 					<div class="divider dropdown-divider"></div>
 					<form action="/logout?_method=DELETE" method="POST">

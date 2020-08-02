@@ -7,9 +7,9 @@ router.param('post', posts.load);
 router.get('/home', posts.list);
 router.get('/post/:post', posts.show);
 router.get('/createpost',loggedin,(req,res) => {
-    res.render('createpost',{title:'Create Post'})
+    res.render('createpost',{title: 'create post', message: undefined})
 });
-router.post('/createpost', [ posts.validate], posts.create);
+router.post('/createpost', loggedin,[ posts.validate], posts.create);
 router.delete('/post/:post', [loggedin, postAuth], posts.destroy);
 router.get('/post/:post/upvote', loggedin, posts.upvote);
 router.get('/post/:post/downvote', loggedin, posts.downvote);
