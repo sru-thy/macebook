@@ -32,7 +32,7 @@ exports.show = async (req, res) => {
     const username = req.params.user;
     const author = await User.findOne({ username });
     const posts = await Post.find({ author: author.id }).sort('-created');
-    res.json(posts);
+    res.render('profile');
   };
 
 
