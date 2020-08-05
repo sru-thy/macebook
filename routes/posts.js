@@ -4,7 +4,7 @@ const { postAuth,commentAuth, loggedin } = require('../controllers/postauth');
 const router = require('express').Router();
 
 router.param('post', posts.load);
-router.get('/home', posts.list);
+router.get('/', posts.list);
 router.get('/post/:post', posts.show);
 router.get('/createpost',loggedin,(req,res) => {
     res.render('createpost',{title: 'create post', message: undefined})
