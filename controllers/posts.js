@@ -25,19 +25,16 @@ exports.show = async (req, res) => {
 
   exports.list = async (req, res) => {
     const posts = await Post.find().sort('-score');
-    res.render('home',{posts:posts,title: 'MaceBook'});
+    res.json(posts);
   };
 
   exports.listByUser = async (req, res) => {
-    try {
     const username = req.params.user;
     const author = await User.findOne({ username });
     const posts = await Post.find({ author: author.id }).sort('-created');
-    res.render('profile',{posts:posts});
-    } catch {
-      res.redirect('/');
-    }
+    res.render('profile');
   };
+
 
   exports.create = async (req, res, next) => {
     const result = validationResult(req);
