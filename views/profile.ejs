@@ -1,5 +1,8 @@
 <nav></nav>
-    <div class="container-fluid" style="padding-top: 3%;">
+<div style="padding-top: 3%;">
+    <% if (posts != undefined) { 
+    posts.forEach((post) => { %>
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-1"> </div>             
             <div class="col-md-10 ">
@@ -8,28 +11,38 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="mr-2">
-                                    <div class="h5"><a class="card-link" href="#">u/user</a></div>
+                                    <div class="h5"><a class="card-link" href="/user/<%= post.author.username %>">u/<%= post.author.username %></a></div>
                                 </div>                               
                             </div>
                             <div>10 mins ago</div>                                                           
                         </div>
                     </div>
-                    <div class="card-body">                     
-                        <a class="card-link" href="#">
-                            <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
+                    <div class="card-body">
+                        <% if(post.type == "link") { %>                    
+                        <a class="card-link" href="<%= post.url %>">
+                            <h5 class="card-title"><%= post.title %></h5>
                         </a>
                         <p class="card-text">
-                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla rem eos ipsa praesentium esse  ipsum dolor sit amet consectetur  
+                            <%= post.url %>
                         </p>
-                    </div>
+                        <% } else if (post.type == "text") { %>
+                        <a class="card-link" href="/post/<%= post._id %>">
+                            <h5 class="card-title"><%= post.text %></h5>
+                        </a>
+                        <p class="card-text">
+                            <%= post.text %>
+                        </p>
+                        <% } %>
+                    </div>                        
                     <div class="card-footer">  
-                    	 <a href="#" class="card-link"> ↑</a>
-                          &nbsp; &nbsp;10
-                         <a href="#" class="card-link">↓</a>
-                         <a href="#" class="card-link">10 Comments</a>                       
+                    	 <a href="/post/<%= post._id %>/upvote" class="card-link"> ↑</a>
+                          &nbsp; &nbsp;<%= post.score %>
+                         <a href="/post/<%= post._id %>/downvote" class="card-link">↓</a>
+                         <a href="/post/<%= post._id %>" class="card-link"><%= post.comments.length %>  Comments</a>                       
                     </div>
                 </div>
             </div>           
         </div>
     </div>
-    
+    <% })} %> 
+</div>    

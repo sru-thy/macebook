@@ -45,11 +45,8 @@ app.use(function (req, res, next) {
     next();
 });
 
-
-app.use('/',require('./routes/index'))
 app.use('/',require('./routes/auth'))
 app.use('/',require('./routes/posts'))
-
 
  app.get('*', function (req, res) {
      res.status(404);
