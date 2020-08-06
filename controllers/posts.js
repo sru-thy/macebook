@@ -20,7 +20,7 @@ exports.show = async (req, res) => {
       req.post.id,
       { new: true }
     );
-    res.json(post);
+    res.render('post',{post:post, message: false});
   };
 
   exports.list = async (req, res) => {
@@ -119,5 +119,5 @@ exports.show = async (req, res) => {
   
   exports.destroy = async (req, res) => {
     await req.post.remove();
-    res.json({ message: 'success' });
+    res.redirect("/");
   };

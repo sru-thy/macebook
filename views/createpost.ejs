@@ -4,10 +4,10 @@
 	    <div class="col-md-8 col-md-offset-2">
 	        <br>
     		    <section>
-					<button id="text" class="active" autofocus >TEXT</button><button id="url">URL</button>
+					<button class="cpbtn" id="text" class="active" autofocus >TEXT</button><button class="cpbtn" id="url">URL</button>
 				</section>
 			<br>
-    		<form action="" method="POST" id="createpostform">
+    		<form action="/createpost" method="POST" id="createpostform">
 				<div class="form-group">
 					<h6></h6><% if (message) { %>
 						<%= message %> 
@@ -29,7 +29,7 @@
     		        <input type="text"  class="value" class="form-control" name="type" value="text"/>
     		    </div>
     		    <div class="form-group">
-    		        <button  type="button" onclick="submitForm()" style="background-color: black; color: white;">
+    		        <button  type="button" onclick="submitForm()" class="cpbtn" style="background-color: black; color: white;">
     		            Create
     		        </button>
     		    </div>    

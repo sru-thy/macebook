@@ -1,0 +1,95 @@
+<nav></nav>
+<div style="padding-top: 3%;">
+    <% if (post != undefined)  { %>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1"> </div>             
+            <div class="col-md-10 ">
+                <div class="card ">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="mr-2">
+                                    <div><a class="card-link" href="/user/<%= post.author.username %>">u/<%= post.author.username %></a></div>
+                                </div>                               
+                            </div>
+                            <time title="<%= post.created %>"></time>                                                           
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <% if(post.type == "link") { %>                    
+                        <a class="card-link" href="<%= post.url %>">
+                            <h5 class="card-title"><%= post.title %></h5>
+                        </a>
+                        <p class="card-text">
+                            <%= post.url %>
+                        </p>
+                        <% } else if (post.type == "text") { %>
+                        <a class="card-link" href="/post/<%= post._id %>">
+                            <h5 class="card-title"><%= post.title %></h5>
+                        </a>
+                        <p class="card-text">
+                            <%= post.text %>
+                        </p>
+                        <% } %>
+                    </div>                       
+                    <div class="card-footer">
+                        <form action="/post/<%= post._id %>?_method=DELETE" method="POST">
+                    	 <a href="/post/<%= post._id %>/upvote" class="card-link"> ↑</a>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<%= post.score %><a href="/post/<%= post._id %>/downvote" class="card-link">↓</a>
+                        <a href="/post/<%= post._id %>" class="card-link"><%= post.comments.length %>  comment</a>
+                        <% if(isauth) { %>
+                        <% if (post.author._id.equals(user._id)) { %>
+                         <button class="float-right postbtn" type="submit">Delete</button>
+                         <% } %>
+                         <% } %>
+                         </form>                        
+                    </div>
+                    <form action="/post/<%= post._id %>" method="POST" >
+                    <div class="card">       
+                        <div class="card-body">                             
+                                 <div class="form-group">
+                                    <textarea class="form-control" id="message" rows="3" style="font-size: 14px;" type="text" placeholder="Write a comment" name="comment" maxlength="100" required></textarea>
+                                </div>    
+                            <div class="btn-toolbar justify-content-between">
+                                <div class="btn-group">
+                                    <button type="submit" class="btn btn-primary">Post</button>
+                                </div>                               
+                            </div> 
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <div style="padding-top: 3%;">
+                <% post.comments.forEach((comment) => { %>   
+                <div class="card ">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="mr-2">
+                                    <div class="h5"><a class="card-link" href="/user/<%= comment.author.username %>">u/<%= comment.author.username %></a></div>
+                                </div>                               
+                            </div>
+                            <time title="<%= comment.created %>"></time>
+                            <form action="/post/<%= post._id+'/'+comment._id%>?_method=DELETE" method="POST">
+                            <% if(isauth) { %>
+                            <% if (comment.author._id.equals(user._id)) { %>
+                                <button class="float-right postbtn" type="submit">Delete</button>
+                            <% } %>
+                            <% } %>
+                            </form>                                                                                                                                                                               
+                        </div>
+                    </div>
+                    <div class="card-body">                  
+                        <p class="card-text">
+                            <%= comment.body %>
+                        </p>
+                    </div> 
+                </div>
+                <% }); %>  
+                </div>             
+            </div>           
+        </div>
+    </div>  
+ <% } %>
+</div>  

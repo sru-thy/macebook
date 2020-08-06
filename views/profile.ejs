@@ -11,10 +11,10 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="mr-2">
-                                    <div class="h5"><a class="card-link" href="/user/<%= post.author.username %>">u/<%= post.author.username %></a></div>
+                                    <div><a class="card-link" href="/user/<%= post.author.username %>">u/<%= post.author.username %></a></div>
                                 </div>                               
                             </div>
-                            <div>10 mins ago</div>                                                           
+                            <time title="<%= post.created %>"></time>                                                                                                                                                                               
                         </div>
                     </div>
                     <div class="card-body">
@@ -35,10 +35,9 @@
                         <% } %>
                     </div>                        
                     <div class="card-footer">  
-                    	 <a href="/post/<%= post._id %>/upvote" class="card-link"> ↑</a>
-                          &nbsp; &nbsp;<%= post.score %>
-                         <a href="/post/<%= post._id %>/downvote" class="card-link">↓</a>
-                         <a href="/post/<%= post._id %>" class="card-link"><%= post.comments.length %>  Comments</a>                       
+                        <a href="/post/<%= post._id %>/upvote" class="card-link"> ↑</a>
+                          &nbsp;&nbsp;&nbsp;&nbsp;<%= post.score %><a href="/post/<%= post._id %>/downvote" class="card-link">↓</a>
+                        <a href="/post/<%= post._id %>" class="card-link"><%= post.comments.length %>  comments</a>                       
                     </div>
                 </div>
             </div>           

@@ -3,6 +3,7 @@ const comments = require('../controllers/comments');
 const { postAuth,commentAuth, loggedin } = require('../controllers/postauth');
 const router = require('express').Router();
 
+
 router.param('post', posts.load);
 router.get('/', posts.list);
 router.get('/post/:post', posts.show);

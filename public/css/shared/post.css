@@ -1,0 +1,10 @@
+.postbtn {
+    border: 0;
+    outline: none;
+    background-color: rgb(255, 255, 255);
+}
+@media (max-width: 979px) {
+    button {
+      padding: 0px 0px;
+    }
+}

@@ -20,7 +20,7 @@ exports.create = async (req, res, next) => {
 
   try {
     const post = await req.post.addComment(req.user.id, req.body.comment);
-    res.status(201).json(post);
+    res.render('post',{post:post});
   } catch (err) {
     next(err);
   }
@@ -34,14 +34,14 @@ exports.validate = [
     .isLength({ min: 1 })
     .withMessage('cannot be blank')
 
-    .isLength({ max: 2000 })
+    .isLength({ max: 100 })
     .withMessage('must be at most 2000 characters long')
 ];
 
 exports.destroy = async (req, res, next) => {
   try {
     const post = await req.post.removeComment(req.params.comment);
-    res.json(post);
+    res.redirect("/post/"+ req.params.post);
   } catch (err) {
     next(err);
   }
