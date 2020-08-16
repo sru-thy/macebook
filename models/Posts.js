@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+// const voting   = require('mongoose-voting');
 const Schema = mongoose.Schema;
 
 const commentSchema = new Schema({
@@ -90,6 +91,6 @@ postSchema.methods.vote = function (user, vote) {
       .then(() => next());
   });
 
-
+// postSchema.plugin(voting, {ref: 'User'});
 const Post = mongoose.model('Post', postSchema);
 module.exports = Post;

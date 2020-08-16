@@ -19,11 +19,11 @@
                     </div>
                     <div class="card-body">
                         <% if(post.type == "link") { %>                    
-                        <a class="card-link" href="<%= post.url %>">
+                            <a class="card-link" href="/post/<%= post._id %>">
                             <h5 class="card-title"><%= post.title %></h5>
-                        </a>
+                        </a>      
                         <p class="card-text">
-                            <%= post.url %>
+                            <a class="card-link" href="<%= post.url %>"> <%= post.url %> </a>
                         </p>
                         <% } else if (post.type == "text") { %>
                         <a class="card-link" href="/post/<%= post._id %>">
